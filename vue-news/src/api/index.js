@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const config = {
-  baseUrl: 'https://api.hnpwa.com/v0/'
+  baseUrl: 'https://api.hnpwa.com/v0/',
+  blogUrl: 'https://jsonplaceholder.typicode.com/'
 }
 
 function fetchNewsList() {
@@ -20,8 +21,12 @@ function fetchUserInfo(username) {
   return axios.get(`${config.baseUrl}user/${username}.json`);
 }
 
-function fetchItemInfo(itemname) {
-  return axios.get(`${config.baseUrl}item/${itemname}.json`);
+function fetchCommentItem (id) {
+  return axios.get(`${config.baseUrl}item/${id}.json`);
+}
+
+function fetchBlogItem () {
+  return axios.get(`${config.blogUrl}posts`);
 }
 
 export {
@@ -29,5 +34,6 @@ export {
   fetchAskList,
   fetchJobsList,
   fetchUserInfo,
-  fetchItemInfo,
+  fetchCommentItem,
+  fetchBlogItem,
 }

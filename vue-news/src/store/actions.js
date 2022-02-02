@@ -3,6 +3,8 @@ import {
   fetchJobsList, 
   fetchAskList,
   fetchUserInfo,
+  fetchCommentItem,
+  fetchBlogItem,
 } from '../api/index'
 
 export default {
@@ -45,10 +47,19 @@ export default {
         console.log(error);
       });
   },
-  FETCH_ITEM({ commit }, item) {
-    fetchUserInfo(item)
+  FETCH_ITEM({ commit }, id) {
+    fetchCommentItem(id)
       .then(({ data }) => {
         commit('SET_ITEM', data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  FETCH_BLOG({ commit }) {
+    fetchBlogItem()
+      .then(({ data }) => {
+        commit('SET_BLOG', data);
       })
       .catch(error => {
         console.log(error);

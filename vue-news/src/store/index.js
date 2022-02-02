@@ -12,10 +12,17 @@ export const store = new Vuex.Store({
     ask: [],
     user: {},
     item: [],
+    blog: [],
   },
   getters: {
     fetchedAsk(state) {
       return state.ask;
+    },
+    fetchedItem(state) {
+      return state.item;
+    },
+    fetchedBlog(state) {
+      return state.blog;
     }
   },
   mutations,
