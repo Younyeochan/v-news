@@ -4,22 +4,19 @@
       <router-link v-bind:to="`blog/${blog.id}`">
         {{ blog.title }}
       </router-link>
-      <small> UserId: {{ blog.userId }}</small>
+      <small> ID: {{ blog.id }}</small>
     </p>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  data() {
-    return {
-      blog: []
-    }
-  }, 
   computed: {
-    ...mapGetters(['fetchedBlog']),
+    ...mapGetters({
+      fetchedBlog: 'fetchedBlog'
+    }),
   },
   created() {
     this.$store.dispatch('FETCH_BLOG');

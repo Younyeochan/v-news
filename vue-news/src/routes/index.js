@@ -6,6 +6,7 @@ import JobsView from '../views/JobsView.vue'
 import UserView from '../views/UserView.vue'
 import ItemView from '../views/ItemView.vue'
 import BlogView from '../views/BlogView.vue'
+import PostView from '../views/PostView.vue'
 
 Vue.use(VueRouter);
 
@@ -14,7 +15,7 @@ export const router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect: '/news',
+      redirect: '/blog',
     },
     {
       path: '/news',
@@ -39,6 +40,10 @@ export const router = new VueRouter({
     {
       path: '/blog',
       component: BlogView,
+    },
+    {
+      path: '/blog/:id',
+      component: PostView,
     },
   ]
 });

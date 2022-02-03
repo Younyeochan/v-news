@@ -29,6 +29,14 @@ function fetchBlogItem () {
   return axios.get(`${config.blogUrl}posts`);
 }
 
+function fetchBlogPost (id) {
+  return axios.get(`${config.blogUrl}posts/${id}`);
+}
+
+function fetchBlogComments () {
+  return axios.get(`${config.blogUrl}comments`);
+}
+
 export {
   fetchNewsList,
   fetchAskList,
@@ -36,4 +44,6 @@ export {
   fetchUserInfo,
   fetchCommentItem,
   fetchBlogItem,
+  fetchBlogPost,
+  fetchBlogComments,
 }

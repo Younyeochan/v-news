@@ -13,6 +13,8 @@ export const store = new Vuex.Store({
     user: {},
     item: [],
     blog: [],
+    post: [],
+    comment: [],
   },
   getters: {
     fetchedAsk(state) {
@@ -23,6 +25,12 @@ export const store = new Vuex.Store({
     },
     fetchedBlog(state) {
       return state.blog;
+    },
+    fetchedPost(state) {
+      return state.post;
+    },
+    fetchedComment(state) {
+      return state.comment;
     }
   },
   mutations,

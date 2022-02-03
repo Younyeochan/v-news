@@ -5,6 +5,8 @@ import {
   fetchUserInfo,
   fetchCommentItem,
   fetchBlogItem,
+  fetchBlogPost,
+  fetchBlogComments,
 } from '../api/index'
 
 export default {
@@ -60,6 +62,24 @@ export default {
     fetchBlogItem()
       .then(({ data }) => {
         commit('SET_BLOG', data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  FETCH_POST({ commit }, id) {
+    fetchBlogPost(id)
+      .then(({ data }) => {
+        commit('SET_POST', data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  FETCH_COMMENT({ commit }) {
+    fetchBlogComments()
+      .then(({ data }) => {
+        commit('SET_COMMENT', data);
       })
       .catch(error => {
         console.log(error);

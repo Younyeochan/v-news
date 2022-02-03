@@ -16,5 +16,11 @@ export default {
   }, 
   SET_BLOG(state, blog) {
     state.blog = blog;
+  },
+  SET_POST(state, post) {
+    state.post = post;
+  },
+  SET_COMMENT(state, comment) {
+    state.comment = comment;
   }
 }
