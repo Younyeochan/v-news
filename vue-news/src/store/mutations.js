@@ -22,5 +22,12 @@ export default {
   },
   SET_COMMENT(state, comment) {
     state.comment = comment;
-  }
+  },
+  removeComment(state, payload) {
+    state.comment.splice(payload.index, 1);
+    localStorage.removeItem(payload.comment.item);
+  },
+  modifyComment(state, payload) {
+    
+  },
 }
