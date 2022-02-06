@@ -1,3 +1,5 @@
+import { fetchBlogComments } from "../api";
+
 export default {
   SET_NEWS(state, news) {
   state.news = news;
@@ -25,9 +27,9 @@ export default {
   },
   removeComment(state, payload) {
     state.comment.splice(payload.index, 1);
-    localStorage.removeItem(payload.comment.item);
   },
-  modifyComment(state, payload) {
-    
-  },
+  editComment() {
+    console.log('dwdwdw')
+   
+  }
 }

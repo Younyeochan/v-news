@@ -15,6 +15,8 @@ export const store = new Vuex.Store({
     blog: [],
     post: [],
     comment: [],
+    items: false,
+    newComment: '',
   },
   getters: {
     fetchedAsk(state) {

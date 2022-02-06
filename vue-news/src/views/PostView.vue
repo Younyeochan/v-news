@@ -8,8 +8,17 @@
       <p class="blogBody">{{ postInfo.body }}</p>
     </div>
     <h1>comment 🙃</h1>
-    <div v-for="comment in fetchedComment" class="comments">
-      <p class="commentCo">{{ comment.body }}</p>
+
+ <!-- <div class="inputBox shadow">
+      <input type="text" v-model="newComment" @keyup.enter="addComment">
+      <span class="addContainer" v-on:click="addComment">
+        <i class="addBtn fas fa-plus" aria-hidden="true"></i>
+      </span>
+    </div> -->
+
+    <div v-for="comment in fetchedComment" :key="comment.id" class="comments">
+      <p v-if="!isStatusOn" class="commentCo">{{ comment.body }}</p>
+      <input style="display: none;" v-else class="inputBox shadow" type="text" v-model="comment.body" @keyup.enter="addComment">
       <div class="gub2">
         <small class="commentEmail">{{ comment.email }}</small>
         <span v-on:click="updateData" class="btn1">수정</span>
@@ -20,9 +29,14 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
+  data() {
+    return{
+      isStatusOn: false
+    }
+  },
   computed: {
     postInfo() {
       return this.$store.state.post;
@@ -41,9 +55,9 @@ export default {
     deleteData(comment, index) {
       this.$store.commit('removeComment', {comment, index});
     },
-    updateData(comment, body) {
-      this.$store.commit('modifyComment', {comment, body});
-    },
+    updateData(comment, index) {
+      this.$store.commit('editComment', {comment, index});
+    }
   },
 }
 </script>
@@ -115,5 +129,38 @@ h2 {
 }
 .time {
   font-size: 0.7rem;
+}
+/* 댓글 영역 */
+input:focus {
+  outline: none;
+}
+.inputBox {
+  background: white;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+  margin: 0 40px 0 30px;
+}
+.inputBox input {
+  border-style: none;
+  margin-left: 20px;
+  font-size: 0.9rem;
+  width: 80%;
+}
+.addContainer {
+  float: right;
+  background: #42b983;
+  display: block;
+  width: 3rem;
+  border-radius: 0 5px 5px 0;
+}
+.addBtn {
+  color: white;
+  vertical-align: middle;
+  margin-left: 16px;
+}
+.closeModalBtn {
+  color: #42b983;
 }
 </style>
