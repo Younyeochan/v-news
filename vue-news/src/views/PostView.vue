@@ -17,8 +17,8 @@
     </div> -->
 
     <div v-for="comment in fetchedComment" :key="comment.id" class="comments">
-      <p v-if="!isStatusOn" class="commentCo">{{ comment.body }}</p>
-      <input style="display: none;" v-else class="inputBox shadow" type="text" v-model="comment.body" @keyup.enter="addComment">
+      <p class="commentCo">{{ comment.body }}</p>
+      <input style="display: none;" class="inputBox shadow" type="text" v-model="comment.body" @keyup.enter="addComment">
       <div class="gub2">
         <small class="commentEmail">{{ comment.email }}</small>
         <span v-on:click="updateData" class="btn1">수정</span>
@@ -32,11 +32,6 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  data() {
-    return{
-      isStatusOn: false
-    }
-  },
   computed: {
     postInfo() {
       return this.$store.state.post;

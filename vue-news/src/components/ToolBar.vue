@@ -2,6 +2,7 @@
   <div class="header">
     Youn yeochan  😀.🙃.😄 - 
     <router-link to="/blog">Blog</router-link> | 
+    <router-link to="/photo">photo</router-link> | 
     <router-link to="/news">News</router-link> | 
     <router-link to="/ask">Ask</router-link> | 
     <router-link to="/jobs">Jobs</router-link>

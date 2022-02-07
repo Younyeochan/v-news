@@ -7,6 +7,7 @@ import UserView from '../views/UserView.vue'
 import ItemView from '../views/ItemView.vue'
 import BlogView from '../views/BlogView.vue'
 import PostView from '../views/PostView.vue'
+import PhotoView from '../views/PhotoView.vue'
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,10 @@ export const router = new VueRouter({
     {
       path: '/blog/:id',
       component: PostView,
+    },
+    {
+      path: '/photo',
+      component: PhotoView,
     },
   ]
 });

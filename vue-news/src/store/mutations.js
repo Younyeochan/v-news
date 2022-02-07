@@ -25,11 +25,18 @@ export default {
   SET_COMMENT(state, comment) {
     state.comment = comment;
   },
+  SET_PHOTO(state, photo) {
+    state.photo = photo;
+  },
   removeComment(state, payload) {
     state.comment.splice(payload.index, 1);
   },
   editComment() {
     console.log('dwdwdw')
-   
+    if($store.state.isStatusOn) {
+      console.log('123dwdwdwdwdwd')
+    } else {
+      console.log('334dwdwdwdwd')
+    }
   }
 }

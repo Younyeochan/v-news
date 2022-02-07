@@ -37,6 +37,10 @@ function fetchBlogComments () {
   return axios.get(`${config.blogUrl}comments`);
 }
 
+function fetchBlogPhotos () {
+  return axios.get(`${config.blogUrl}photos`);
+}
+
 export {
   fetchNewsList,
   fetchAskList,
@@ -46,4 +50,5 @@ export {
   fetchBlogItem,
   fetchBlogPost,
   fetchBlogComments,
+  fetchBlogPhotos,
 }

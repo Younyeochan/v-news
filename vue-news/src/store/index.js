@@ -15,8 +15,10 @@ export const store = new Vuex.Store({
     blog: [],
     post: [],
     comment: [],
+    photo: [],
     items: false,
     newComment: '',
+    isStatusOn: false,
   },
   getters: {
     fetchedAsk(state) {
@@ -33,6 +35,9 @@ export const store = new Vuex.Store({
     },
     fetchedComment(state) {
       return state.comment;
+    },
+    fetchedPhoto(state) {
+      return state.photo;
     }
   },
   mutations,

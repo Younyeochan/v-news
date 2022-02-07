@@ -7,6 +7,7 @@ import {
   fetchBlogItem,
   fetchBlogPost,
   fetchBlogComments,
+  fetchBlogPhotos,
 } from '../api/index'
 
 export default {
@@ -80,6 +81,15 @@ export default {
     fetchBlogComments()
       .then(({ data }) => {
         commit('SET_COMMENT', data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  FETCH_PHOTO({ commit }) {
+    fetchBlogPhotos()
+      .then(({ data }) => {
+        commit('SET_PHOTO', data);
       })
       .catch(error => {
         console.log(error);
