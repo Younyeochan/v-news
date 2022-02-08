@@ -19,6 +19,7 @@ export const store = new Vuex.Store({
     items: false,
     newComment: '',
     isStatusOn: false,
+    game: [],
   },
   getters: {
     fetchedAsk(state) {
@@ -38,6 +39,9 @@ export const store = new Vuex.Store({
     },
     fetchedPhoto(state) {
       return state.photo;
+    },
+    fetchedGame(state) {
+      return state.game;
     }
   },
   mutations,

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import { router } from './routes/index.js';
 import { store } from './store/index'
+import 'leaflet/dist/leaflet.css';
 
 Vue.config.productionTip = false
 

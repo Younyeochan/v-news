@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const config = {
   baseUrl: 'https://api.hnpwa.com/v0/',
-  blogUrl: 'https://jsonplaceholder.typicode.com/'
+  blogUrl: 'https://jsonplaceholder.typicode.com/',
+  gameUrl: 'https://random-word-api.herokuapp.com/'
 }
 
 function fetchNewsList() {
@@ -41,6 +42,10 @@ function fetchBlogPhotos () {
   return axios.get(`${config.blogUrl}photos`);
 }
 
+function fetchGame () {
+  return axios.get(`${config.gameUrl}word?number=100`);
+}
+
 export {
   fetchNewsList,
   fetchAskList,
@@ -51,4 +56,5 @@ export {
   fetchBlogPost,
   fetchBlogComments,
   fetchBlogPhotos,
+  fetchGame,
 }

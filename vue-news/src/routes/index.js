@@ -8,6 +8,8 @@ import ItemView from '../views/ItemView.vue'
 import BlogView from '../views/BlogView.vue'
 import PostView from '../views/PostView.vue'
 import PhotoView from '../views/PhotoView.vue'
+import GameView from '../views/Game.vue'
+import MapView from '../views/MapView.vue'
 
 Vue.use(VueRouter);
 
@@ -49,6 +51,14 @@ export const router = new VueRouter({
     {
       path: '/photo',
       component: PhotoView,
+    },
+    {
+      path: '/game',
+      component: GameView,
+    },
+    {
+      path: '/map',
+      component: MapView,
     },
   ]
 });
