@@ -1,5 +1,5 @@
 <template>
-   <div style="height: 865px; width: 100%">
+   <div style="height: 880px; width: 100%">
     <l-map
       @click="onCustomClick"
       @update:zoom="updateZoom"

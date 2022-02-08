@@ -97,18 +97,18 @@ export default {
   },
   FETCH_GAME({ commit }) {
     fetchGame()
-      .then(function (response) {
-        response.data.forEach((word)=>{
-          if(word.length < 10) {
-            words.push(word);
-          }
-        })
-        console.log(words);
-        buttonChange('게임 시작')
+    .then(function (response) {
+      response.data.forEach((word)=>{
+        if(word.length < 10) {
+          words.push(word);
+        }
       })
-      .catch(function (response) {
-        console.log(response)
-      })
+      console.log(words);
+      buttonChange('게임 시작')
+    })
+    .catch(function (response) {
+      console.log(response)
+    })
       // .then(({ data }) => {
       //   commit('SET_GAME', data);
         
