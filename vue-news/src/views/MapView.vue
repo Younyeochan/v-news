@@ -1,15 +1,20 @@
 <template>
    <div style="height: 865px; width: 100%">
     <l-map
+      @click="onCustomClick"
+      @update:zoom="updateZoom"
+      @update:center="updateCenter"
       :zoom="zoom"
       :center="center"
       style="height: 100%"
     >
+      <l-circle :lat-lng="circle.center" fillOpacity="0.1" fillColor="blue" color="red" :radius="90" />
       <l-tile-layer
         :url="url"
         :attribution="attribution"
       />
-      <l-marker :lat-lng="getCoord(item.lat,item.long)" v-for="item in coordArray" :key="item.id">
+      <l-marker :draggable="true" @update:latlng="onDrag" @click="onLogMarker(item)" :lat-lng="getCoord(item.lat,item.long)" v-for="item in coordArray" :key="item.id">
+        <l-icon :icon-url="icon" :icon-size="iconSize" />
         <l-popup>
             {{item.name}}
         </l-popup>
@@ -20,7 +25,8 @@
 
 <script>
 import { latLng, Icon } from "leaflet";
-import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LPopup, LTooltip,LIcon, LCircle } from "vue2-leaflet";
+import marker from '../assets/marker.png'
 
 delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
@@ -35,11 +41,29 @@ export default {
     LTileLayer,
     LMarker,
     LPopup,
-    LTooltip
+    LTooltip,
+    LIcon,
+    LCircle,
   },
   methods: {
     getCoord(a,b) {
       return latLng(a,b)
+    },
+    updateZoom(zoom) {
+      console.log('zoom', zoom)
+    },
+    updateCenter(center) {
+      console.log('center', center)
+    },
+    onLogMarker(item) {
+      console.log('item', item)
+    },
+    onDrag({lat,lng}){
+      console.log('younyc', lat,lng)
+    },
+    onCustomClick(item) {
+      const {latLng}=item;
+      console.log('yo',latLng)
     }
   },
   data() {
@@ -48,11 +72,13 @@ export default {
       center: latLng( 37.373626, -233.054960),
       url: 'https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=0d4710c6db794c76b51b2e74af8e4aea',
       attribution: '이지트래픽',
-      withPopup: latLng(37.374857, -233.052315),
-      currentZoom: 20,
-      currentCenter: latLng(37.374857, -233.052315),
-      showParagraph: false,
       coordArray:[{id:1,lat:37.374857,long:-233.052315,name:'이지트래픽'},{id:2,lat:37.372239,long:-233.056607,name:'금정역'}],
+      icon: marker,
+      iconSize:[40, 40],
+      circle: {
+        center: latLng( 37.374857, -233.052315 ),
+        radius: 5000
+      }
     };
   },
 }
